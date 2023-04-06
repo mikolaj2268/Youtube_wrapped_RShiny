@@ -1,0 +1,13 @@
+name: Youtube_app
+title: Youtube_app
+username:
+account: mikolajmroz
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8767233
+bundleId: 7057463
+url: https://mikolajmroz.shinyapps.io/Youtube_app/
+when: 1680791101.96154
+lastSyncTime: 1680791101.96155
+asMultiple: FALSE
+asStatic: FALSE
