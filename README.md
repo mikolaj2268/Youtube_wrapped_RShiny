@@ -1,7 +1,7 @@
 # Youtube Wrapped RShiny
 https://mrozmikolaj.shinyapps.io/Youtube_wrapped/
   
-This app is the result of a project from University subject Data Visualization Techniques made using YouTube data. The app allows you to analyze and visualize data from YouTube, providing insights into the most popular channels and videos as well as patterns in YouTube viewership.
+This app is the result of a project of an university subject Data Visualization Techniques made using YouTube data. The app allows you to analyze and visualize data from YouTube, providing insights into the most popular channels and videos as well as patterns in YouTube viewership.
 
 The app offers several features, including a frame displaying the most-watched channels on YouTube, allowing you to explore which channels are the most popular among users. You can also view the most-watched video and get a sense of what content is most engaging to YouTube viewers.
 
