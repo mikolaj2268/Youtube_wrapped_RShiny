@@ -1,0 +1,13 @@
+name: Youtube_wrapped
+title: Youtube_wrapped
+username:
+account: mrozmikolaj
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8787497
+bundleId: 7059590
+url: https://mrozmikolaj.shinyapps.io/Youtube_wrapped/
+when: 1680826200.92929
+lastSyncTime: 1680826200.92929
+asMultiple: FALSE
+asStatic: FALSE

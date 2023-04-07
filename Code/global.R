@@ -57,15 +57,30 @@ df <- df %>%
   select(id, everything())
 
 df <- mutate(df, weekday = weekdays(df$time))
+df <- df %>% mutate(weekday = recode(weekday,
+                                            "Monday" = 1,
+                                            "Tuesday" = 2,
+                                            "Wednesday" = 3,
+                                            "Thursday" = 4,
+                                            "Friday" = 5,
+                                            "Saturday" = 6,
+                                            "Sunday" = 7))
 
+# to bylo zle
+# videos_per_channel <- videos_per_channel[!duplicated(videos_per_channel[c(1,2)]),]
+# videos_per_channel <- videos_per_channel[order(df[,'channel'],-df[,'channelSubscribers']),]
+# videos_per_channel <- arrange(videos_per_channel, desc(videos_per_channel$number_of_videos))
 
-videos_per_channel <- df %>% 
-  group_by(channel, who) %>% 
-  mutate(number_of_videos = n()) %>% 
+videos_per_channel <- df %>%
+  group_by(channel, who) %>%
+  mutate(number_of_videos = n()) %>%
   select(number_of_videos)
 videos_per_channel <- merge(videos_per_channel, df[,c(4,11)], by = 'channel', all.x = TRUE)
-videos_per_channel <- videos_per_channel[!duplicated(videos_per_channel[c(1,2)]),]
-videos_per_channel <- videos_per_channel[order(df[,'channel'],-df[,'channelSubscribers']),]
+
+videos_per_channel <- videos_per_channel %>%
+  distinct(channel, who, .keep_all = TRUE) %>%
+  arrange(channel, desc(channelSubscribers))
+
 videos_per_channel <- arrange(videos_per_channel, desc(videos_per_channel$number_of_videos))
 colnames(videos_per_channel)[3] <- "videos watched"
 videos_per_channel <- videos_per_channel[, c(1,3,4,2)]
@@ -73,7 +88,7 @@ colnames(videos_per_channel)[3] <- "subscribers"
 
 watch_time_per_channel <- aggregate(df$duration, by=list(Category=df$channel), FUN=sum)
 names(watch_time_per_channel) = c("channel", "watchtime")
-watch_time_per_channel <- merge(watch_time_per_channel, df[,c(4,11,12)], by = 'channel', all.x = TRUE) 
+watch_time_per_channel <- merge(watch_time_per_channel, df[,c(4,11,12)], by = 'channel', all.x = TRUE)
 watch_time_per_channel <- watch_time_per_channel[!duplicated(watch_time_per_channel[c(1,2)]),]
 watch_time_per_channel <- watch_time_per_channel[order(df[,'channel'],-df[,'channelSubscribers']),]
 watch_time_per_channel <- arrange(watch_time_per_channel, desc(watch_time_per_channel$watchtime))
@@ -89,27 +104,31 @@ videos_per_channelM <- filter(videos_per_channel, videos_per_channel$who =="M")
 videos_per_channelB <- filter(videos_per_channel, videos_per_channel$who =="B")
 
 
-videos_per_weekday <- df %>% 
-  group_by(weekday, who) %>% 
-  mutate(number_of_videos = n()) %>% 
-  arrange(desc(number_of_videos)) %>% 
+
+
+
+
+
+videos_per_weekday <- df %>%
+  group_by(weekday, who) %>%
+  mutate(number_of_videos = n()) %>%
+  arrange(desc(number_of_videos)) %>%
   select(number_of_videos)
 videos_per_weekday <- unique(videos_per_weekday, by = 'weekday')
 videos_per_weekday$weekday <- factor(videos_per_weekday$weekday, levels =
-                                       c("Sunday", "Saturday", "Friday", "Thursday", "Wednesday",
-                                         "Tuesday", "Monday")) 
+                                       c(1, 2, 3, 4, 5, 6, 7))
 
 
 weekdayPlot <- ggplot(videos_per_weekday, aes(x=weekday, y=number_of_videos, fill=who)) +
   geom_chicklet(position = "dodge")
 videos_per_weekday$who <- factor(videos_per_weekday$who, levels =
-                                   c("B","M","P")) 
+                                   c("B","M","P"))
 
 fill <- c('#124e78', '#d74e09','#6e0e0a') #'#2e86ab', Mikołaj='#c73e1d', Paweł='#f18f01')
 weekdayPlot <- ggplot(videos_per_weekday, aes(x=weekday, y=number_of_videos, fill=who), alpha = 0.5) +
   geom_chicklet(position = "dodge") +
   scale_y_continuous(expand = c(0,0)) +
-  coord_flip() + 
+  coord_flip() +
   theme_classic() +
   labs(y = 'watched videos') +
   scale_fill_manual("",labels = paste("<span style='color:",
@@ -138,7 +157,7 @@ names(watch_time_per_weekday) = c("weekday", "watchtime")
 watch_time_per_weekday <- arrange(watch_time_per_weekday, desc(watch_time_per_weekday$watchtime))
 watch_time_per_weekday$weekday <- factor(watch_time_per_weekday$weekday, levels =
                                            c("Sunday", "Saturday", "Friday", "Thursday", "Wednesday",
-                                             "Tuesday", "Monday")) 
+                                             "Tuesday", "Monday"))
 
 
 
@@ -447,19 +466,19 @@ hourPlotAll
 
 
 calendarM <- dfM %>%
-  mutate(day = substr(time,1,11)) %>% 
+  mutate(day = substr(time,1,11)) %>%
   group_by(day) %>%
   count() %>%
   rename(date=day)
 
 calendarP <- dfP %>%
-  mutate(day = substr(time,1,11)) %>% 
+  mutate(day = substr(time,1,11)) %>%
   group_by(day) %>%
   count() %>%
   rename(date=day)
 
 calendarB <- dfB %>%
-  mutate(day = substr(time,1,11)) %>% 
+  mutate(day = substr(time,1,11)) %>%
   group_by(day) %>%
   count() %>%
   rename(date=day)

@@ -249,12 +249,15 @@ ui <- navbarPage(div(img(src = "logo.png", width = 60, height = 60,class = "img-
       ),
       tabPanel(div("About", style = "font-size: 30px;"),
                
-               h4("YouTube Wrapped to aplikacja bazująca na platformie YouTube, która pozwala użytkownikom
-                przeglądać podsumowanie swojej aktywności odtwarzania i oglądania przez cały rok.
-                Zawiera ona informacje takie 10 najczęściej oraz najwięcej oglądanych kanałów pod względem liczby subkrybentów danego kanału. 
-                Użytkownicy mogą również sprawdzić gęstość czasu spędzonego na platformie i proporcje liczby filmików w zależności od dnia tygodnia oraz danego dnia w roku.
-                W trzeciej zakładce można również porównać liczbe oglądanych odcinków biorąc zakres popularności filmików. Całość jest kolorystycznie dostosowana tak jak na poniższej legendzie:
-                  ", align = "center", style = "color: white" ),
+               h4("YouTube Wrapped is an application based on the YouTube platform that 
+               allows users to browse a summary of their playback and viewing activity 
+               throughout the year. It includes information such as the 10 most frequently 
+               and most watched channels in terms of the number of subscribers to each channel. 
+               Users can also check the density of time spent on the platform and the proportions 
+               of the number of videos watched by day of the week and day of the year. In the third 
+               tab, users can also compare the number of episodes watched by taking the range of 
+               video popularity into account. The entire application is color-coded in accordance 
+               with the legend below.", align = "center", style = "color: white" ),
                
                fluidRow(
                  column(
