@@ -18,7 +18,4 @@ This project was created by:
 It was a final project of university course.
 
 
- 
 
-
-https://mrozmikolaj.shinyapps.io/Youtube_wrapped/
