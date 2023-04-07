@@ -5,7 +5,7 @@ This app was made as a part of the Data Visualization Techniques university cour
 
 The app offers several features, including a frame displaying the most-watched channels on YouTube, allowing you to explore which channels are the most popular among users. You can also view the most-watched video and get a sense of what content is most engaging to YouTube viewers.
 
-In addition, the app provides graphs showing the time of day when people watch YouTube the most. This information can be useful for content creators and marketers looking to optimize their video posting schedules and target their audiences effectively.
+In addition, the app provides graphs showing the time of day when we watch YouTube the most according to our data.
 
 If you want to try the app yourself, you can use the link from the top of the page.
 
