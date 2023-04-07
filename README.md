@@ -15,5 +15,9 @@ This project was created by:
 -   Michał Binda (https://github.com/michal1701)
 -   Paweł Świderski
 
-
+# Main panel
+![](https://github.com/mikolaj2268/Youtube_wrapped_RShiny/blob/main/Visualizations/Screenshot%202023-04-07%20161802.png)
+# Other panels
+![](https://github.com/mikolaj2268/Youtube_wrapped_RShiny/blob/main/Visualizations/Screenshot%202023-04-07%20161853.png)
+![](https://github.com/mikolaj2268/Youtube_wrapped_RShiny/blob/main/Visualizations/Screenshot%202023-04-07%20161947.png)
 
