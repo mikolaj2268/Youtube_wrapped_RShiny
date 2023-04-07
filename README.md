@@ -15,7 +15,5 @@ This project was created by:
 -   Michał Binda (https://github.com/michal1701)
 -   Paweł Świderski
 
-It was a final project of university course.
-
 
 
